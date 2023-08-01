@@ -10,5 +10,7 @@ This project was created alongside this [Explanation Series](https://youtube.com
 
 # How to run the project
 Currently there are two files to test the project: testGenome.py and testEvolve.py.
+
 testGenome.py creates a Genome (Neural Network) with some default connections and opens a window, visualizing this Genome. It also has an interface where one can mutate the Genome manually and test it by calculating some output based on the input hard-coded in the file.
+
 testEvolve.py shows how the program could actually be used to learn a specific task. In this case, the AI is rewarded for generating a high output. In practice, instead of just setting the score to the output of the Genome, one would have to test the Genome in an environment, calculate some Fitness-Value and then start the evolving process. However this somehow pointless implementation still shows that the Algorithm is working as many species approch a score of 1 (maximum, since the [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function) function was used on the output). 
