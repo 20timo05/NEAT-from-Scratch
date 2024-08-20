@@ -1,9 +1,9 @@
 import pygame
 
 class Plotter():
-    def __init__(self, genome, calculateHandler = None):
-        self.nodes = genome.nodes
-        self.connections = genome.connections
+    def __init__(self, client, calculateHandler = None):
+        self.nodes = client.genome.nodes
+        self.connections = client.genome.connections
 
         self.SHOW_WEIGHTS = True
         self.SCREEN_WIDTH = 700
@@ -11,12 +11,12 @@ class Plotter():
         self.CONTROLS_HEADER_HEIGHT = 100
 
         self.buttons = {
-            "random weight": lambda: genome.mutate(0),
-            "weight shift": lambda: genome.mutate(1),
-            "Link mutate": lambda: genome.mutate(2),
-            "Node mutate": lambda: genome.mutate(3),
-            "on/ off": lambda: genome.mutate(4),
-            "Mutate": lambda: genome.mutate(),
+            "random weight": lambda: client.mutate(0),
+            "weight shift": lambda: client.mutate(1),
+            "Link mutate": lambda: client.mutate(2),
+            "Node mutate": lambda: client.mutate(3),
+            "on/ off": lambda: client.mutate(4),
+            "Mutate": lambda: client.mutate(),
             "Calculate": lambda: calculateHandler()
         }
 

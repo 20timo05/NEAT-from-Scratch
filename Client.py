@@ -42,4 +42,9 @@ class Client():
                     if needsCon: mutation(con)
                     else: mutation()
 
-        else: mutation_options[choice][1](*mutation_options[choice][2])
+        else:
+            if mutation_options[choice][2]:
+                con = random.choice(self.genome.connections) if len(self.genome.connections) > 0 else None
+                mutation_options[choice][1](con)
+            else:
+                mutation_options[choice][1]()

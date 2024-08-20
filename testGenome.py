@@ -2,23 +2,23 @@ import random
 from Neat import Neat
 from NNPlotter import Plotter
 
-neat = Neat(3, 3, 100)
-genome = neat.empty_genome()
+neat = Neat(3, 3, 1)
+client = neat.clients[0]
 
 for con in [(0, 4), (0, 5), (2, 5), (2, 3)]:
     connection = neat.getConnection(
-        genome.nodes[con[0]],
-        genome.nodes[con[1]]
+        client.genome.nodes[con[0]],
+        client.genome.nodes[con[1]]
     )
     connection.weight = round(random.random(), 3)
     connection.enabled = True
-    genome.connections.append(connection)
+    client.genome.connections.append(connection)
 
 def calculateTest():
     input = [1, 1, 1]
-    genome.calculator.setup(genome)
-    output = genome.calculator.calculate(input)
+    client.calculator.setup(client.genome)
+    output = client.calculate(input)
     print(output)
 
-plotter = Plotter(genome, calculateHandler = calculateTest)
+plotter = Plotter(client, calculateHandler = calculateTest)
 plotter.draw()
